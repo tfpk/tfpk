@@ -1,0 +1,8 @@
+{
+  "name": "tfpk.web",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:tfpk/tfpk.web.git",
+  "author": "Tom Kunc <tom@tfpk.dev>",
+  "license": "MIT"
+}
