@@ -1,0 +1,29 @@
+[build]
+target = "index.html"
+dist = "dist"
+release = false
+public_url = "/"
+
+[watch]
+watch = [
+    "./index.html",
+    "src/",
+    "css/",
+    "static/",
+]
+
+[clean]
+dist = "dist"
+
+[[hooks]]
+stage = "pre_build"
+command = "sh"
+# run tailwind build with webpack
+command_arguments = [
+    "-c",
+    "[ ! -d \"./node_modules\" ] && npm i || :; npm run build_css",
+]
+
+[[proxy]]
+rewrite = "/api/v1/content/"
+backend = "http://localhost:3965/"

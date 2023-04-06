@@ -14,13 +14,16 @@ pub enum GlyphType {
     Mail,
     Snackbar,
     Brightness,
+    Blog,
+    Experience,
+    Resume,
 }
 
 #[function_component(Glyph)]
 pub fn glyph(props: &GlyphProps) -> Html {
     let color = match &props.color {
         Some(color) => color.clone(),
-        None => "fg-accent".to_string()
+        None => "fg-accent".to_string(),
     };
     match props.glyph {
         GlyphType::Github => html! {
@@ -63,7 +66,30 @@ pub fn glyph(props: &GlyphProps) -> Html {
         },
         GlyphType::Brightness => html! {
             <svg class={classes!("h-6", "w-6", color)}  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <circle cx="12" cy="12" r="5" />  <line x1="12" y1="1" x2="12" y2="3" />  <line x1="12" y1="21" x2="12" y2="23" />  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />  <line x1="1" y1="12" x2="3" y2="12" />  <line x1="21" y1="12" x2="23" y2="12" />  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" /></svg>
-        }
+        },
+        GlyphType::Blog => html! {
+            <svg
+                class={classes!("pt-2", "h-10", "w-8", color)}
+                viewBox="0 0 24 32"  fill="none"  stroke="currentColor"
+                stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">
+                 <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M6 4h11a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-11a1 1 0 0 1 -1 -1v-14a1 1 0 0 1 1 -1m3 0v18" />  <line x1="13" y1="8" x2="15" y2="8" />  <line x1="13" y1="12" x2="15" y2="12" />
+            </svg>
+        },
+        GlyphType::Experience => html! {
+            <svg
+                class={classes!("pt-2", "h-10", "w-8", color)}
+                viewBox="0 0 24 32"  fill="none"  stroke="currentColor"
+                stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z"/>  <path d="M12 17.75l-6.172 3.245 1.179-6.873-4.993-4.867 6.9-1.002L12 2l3.086 6.253 6.9 1.002-4.993 4.867 1.179 6.873z" />
+            </svg>
+        },
+        GlyphType::Resume => html! {
+            <svg
+                class={classes!("pt-2", "h-10", "w-8", color)}
+                viewBox="0 0 24 32"  fill="none"  stroke="currentColor"
+                stroke-width="1.5"  stroke-linecap="round"  stroke-linejoin="round">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+        },
     }
-
 }

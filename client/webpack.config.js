@@ -1,46 +1,48 @@
-const path = require("path");
-const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const fs = require('fs');
+const projectRoot = __dirname;
+const cssSourceRoot = projectRoot + "/css"
 
-const distPath = path.resolve(__dirname, "dist");
-module.exports = (env, argv) => {
-  return {
-    devServer: {
-      contentBase: distPath,
-      compress: argv.mode === "production",
-      port: 8000,
-    },
-    entry: "./bootstrap.js",
-    output: {
-      path: distPath,
-      filename: "client.js",
-      webassemblyModuleFilename: "client.wasm",
-    },
-    module: {
-      rules: [
-        {
-          test: /\.css$/i,
-          use: ["style-loader", "css-loader"],
-        },
-        {
-          test: /\.(png|jpe?g|gif)$/i,
-          use: [
-            {
-              loader: 'file-loader',
-            },
-          ],
-        },
-      ],
-    },
-    plugins: [
-      new CopyWebpackPlugin({
-        patterns: [{ from: "./static", to: distPath }],
-      }),
-      new WasmPackPlugin({
-        crateDirectory: ".",
-        extraArgs: "--no-typescript",
-      }),
+function findAllCssExtensions(dir) {
+  const extensions = [];
+  const files = fs.readdirSync(dir);
+  files.forEach(file => {
+    const filePath = `${dir}/${file}`;
+    const stat = fs.statSync(filePath);
+    if (stat.isDirectory()) {
+      extensions.push(...findAllCssExtensions(filePath));
+    } else if ((file.endsWith('.css') || file.endsWith('.scss')) && !file.endsWith("tailwind_base.css")) {
+      extensions.push(filePath);
+    }
+  });
+  return extensions;
+}
+
+const entryMap = findAllCssExtensions(cssSourceRoot);  // run tailwind builder before this
+
+module.exports = {
+  mode: "development",
+  entry: entryMap,
+  output: {
+    path: projectRoot + "/dist/css",
+    filename: "style.js",
+  },
+  plugins: [new MiniCssExtractPlugin()],
+  module: {
+    rules: [
+      {
+        test: /\.(scss|css)$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
     ],
-    watch: argv.mode !== "production",
-  };
+  },
 };
+

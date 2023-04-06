@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "tailwind": "npx tailwindcss -i ./static/input.css -o ./output.css",
+    "build_css": "npx tailwindcss -i ./css/tailwind/tailwind_base.css -o ./css/tailwind/dist/tailwind.css && npx webpack",
     "tailwind:watch": "npx tailwindcss -i ./static/input.css -o ./output.css --watch",
     "dev": "concurrently \"webpack-dev-server --mode development --open\" \"yarn run tailwind:watch\"",
     "build": "yarn run tailwind && webpack --mode production",
@@ -21,6 +22,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "mini-css-extract-plugin": "0.9.0",
     "postcss": "^8.4.21"
   }
 }
