@@ -1,0 +1,53 @@
+[[project_group]]
+
+title = "Featured Projects"
+short_text = """\
+Though I've worked a few jobs, my favourite projects are the ones I've worked on in my spare time.
+You can read a summary of the projects I've worked on below. """
+img_path = "/static/project_featured.jpg"
+
+[[project_group.project]]
+title = "Maintainer - Macrokata & Lifetimekata"
+upper_time = "Sep 2022"
+lower_time = "Current"
+summary = """\
+While teaching Rust at UNSW, I noticed that there were no tools that
+helped when teaching macros or lifetimes. The macrokata and lifetimekata
+projects are books, with associated exercises. These help people to
+learn how to use these more advanced Rust concepts well.
+"""
+link = "https://github.com/tfpk/macrokata"
+
+[[project_group.project]]
+title = "Maintainer - This Website"
+upper_time = "Apr 2023"
+lower_time = "Current"
+summary = """\
+Well, you're reading it, so hopefully it was worthwhile... This
+website is entirely built in front-end Rust, using the Yew framework.
+"""
+link = "https://github.com/tfpk/tfpk.web"
+
+
+[[project_group]]
+
+title = "Casual Academic at UNSW"
+short_text = """
+Starting in 2018, I worked as a tutor for COMP1511, the introduction
+to Computer Science course at UNSW. Over five years, I moved from
+teaching one class to being in charge of administration for three
+courses: COMP1511, COMP6721 (Informal Methods), and COMP6991 (Solving
+Modern Programming Problems with Rust).
+"""
+img_path = "/static/project_UNSW_tutor.jpg"
+
+
+[[project_group]]
+
+title = "Computer Science Student @ UNSW"
+short_text = """
+I was a student for the Bachelor of Computer Science from 2018 to 2022.
+I didn't major in an area of computer science: I studied broad fields
+from Operating Systems, to Theoretical CS, to Security.
+"""
+img_path = "/static/project_UNSW_student.jpg"

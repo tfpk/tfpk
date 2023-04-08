@@ -1,0 +1,10 @@
+[[blogs]]
+
+title = "COMP2521 on Easy Mode"
+slug = "cs2521-on-easy-mode"
+lede = "This blog walks through everything you need to know to get through COMP2521"
+tags = ["UNSW"]
+md_path = "blogs/2521_easy_mode/2521_easy_mode.md"
+img_path = "static/hero_zion.jpg"
+published  = 2023-03-28T12:00:00
+last_updated = 2023-03-28T12:00:00

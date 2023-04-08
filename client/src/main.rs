@@ -3,6 +3,7 @@
 mod blogs;
 mod components;
 mod protocols;
+mod projects;
 
 use std::rc::Rc;
 
@@ -19,6 +20,7 @@ use crate::components::home::HomePage;
 use crate::components::projects::ProjectsPage;
 
 use crate::protocols::blog_list_toml::BlogListMetadata;
+use crate::protocols::projects_list_toml::{Project, ProjectsMetadata};
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
 // allocator.
@@ -113,12 +115,14 @@ fn header() -> Html {
 #[derive(Debug, Clone, PartialEq)]
 struct Content {
     blog_metadata: Rc<BlogListMetadata>,
+    project_metadata: Rc<ProjectsMetadata>,
 }
 
 #[function_component(App)]
 pub fn app() -> Html {
     let content = Rc::new(use_state(|| Content {
         blog_metadata: BlogListMetadata { blogs: vec![] }.into(),
+        project_metadata: ProjectsMetadata { project_groups: vec![] }.into(),
     }));
     {
         let content = content.clone();
@@ -132,8 +136,16 @@ pub fn app() -> Html {
                         .text()
                         .await
                         .unwrap();
+                    let projects_toml = Request::new("http://0.0.0.0:9000/projects.toml")
+                        .send()
+                        .await
+                        .unwrap()
+                        .text()
+                        .await
+                        .unwrap();
                     content.set(Content {
                         blog_metadata: BlogListMetadata::from_text(&blogs_toml).into(),
+                        project_metadata: ProjectsMetadata::from_text(&projects_toml).into()
                     });
                 });
             },
