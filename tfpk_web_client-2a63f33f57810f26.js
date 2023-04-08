@@ -713,6 +713,13 @@ function getImports() {
         getInt32Memory0()[arg0 / 4 + 1] = len0;
         getInt32Memory0()[arg0 / 4 + 0] = ptr0;
     }, arguments) };
+    imports.wbg.__wbg_origin_4361a18d29b70c77 = function() { return handleError(function (arg0, arg1) {
+        const ret = getObject(arg1).origin;
+        const ptr0 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        const len0 = WASM_VECTOR_LEN;
+        getInt32Memory0()[arg0 / 4 + 1] = len0;
+        getInt32Memory0()[arg0 / 4 + 0] = ptr0;
+    }, arguments) };
     imports.wbg.__wbg_pathname_7b2f7ba43a0fdd6e = function() { return handleError(function (arg0, arg1) {
         const ret = getObject(arg1).pathname;
         const ptr0 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
@@ -905,16 +912,16 @@ function getImports() {
         const ret = wasm.memory;
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper2274 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 870, __wbg_adapter_36);
+    imports.wbg.__wbindgen_closure_wrapper2276 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 871, __wbg_adapter_36);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper2691 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 1010, __wbg_adapter_39);
+    imports.wbg.__wbindgen_closure_wrapper2693 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 1011, __wbg_adapter_39);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper2748 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 1034, __wbg_adapter_42);
+    imports.wbg.__wbindgen_closure_wrapper2750 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 1035, __wbg_adapter_42);
         return addHeapObject(ret);
     };
 
@@ -953,7 +960,7 @@ function initSync(module) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = new URL('tfpk_web_client-cd7e73a2f6df7a64_bg.wasm', import.meta.url);
+        input = new URL('tfpk_web_client-2a63f33f57810f26_bg.wasm', import.meta.url);
     }
     const imports = getImports();
 
