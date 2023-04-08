@@ -13,5 +13,5 @@ class CORSRequestHandler(SimpleHTTPRequestHandler):
         return super(CORSRequestHandler, self).end_headers()
 
 
-httpd = HTTPServer(('localhost', 9000), CORSRequestHandler)
+httpd = HTTPServer(('localhost', 3965), CORSRequestHandler)
 httpd.serve_forever()

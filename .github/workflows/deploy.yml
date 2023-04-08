@@ -24,13 +24,15 @@ jobs:
     - name: trunk-action
       uses: jetli/trunk-action@v0.1.0
 
-    # build css and rust
+    # build css and rust and do copying
     - name: run trunk
       working-directory: ./client
       run: trunk build --release
     - name: copy 404 to dist
       working-directory: ./client
       run: cp 404.html dist/
+    - name: copy CNAME
+      run: cp CNAME client/dist/
 
     # deploy for github.io
     - name: GitHub Pages action

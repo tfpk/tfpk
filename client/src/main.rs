@@ -116,6 +116,7 @@ fn header() -> Html {
 struct Content {
     blog_metadata: Rc<BlogListMetadata>,
     project_metadata: Rc<ProjectsMetadata>,
+    url: Rc<String>,
 }
 
 #[function_component(App)]
@@ -123,20 +124,23 @@ pub fn app() -> Html {
     let content = Rc::new(use_state(|| Content {
         blog_metadata: BlogListMetadata { blogs: vec![] }.into(),
         project_metadata: ProjectsMetadata { project_groups: vec![] }.into(),
+        url: web_sys::window().unwrap().location().origin().unwrap().into(),
     }));
     {
         let content = content.clone();
         use_effect_with_deps(
             |_| {
                 wasm_bindgen_futures::spawn_local(async move {
-                    let blogs_toml = Request::new("http://0.0.0.0:9000/blogs.toml")
+                    let url_rc = content.url.clone();
+                    let url = url_rc.as_str();
+                    let blogs_toml = Request::new(&format!("{url}/static/content/blogs.toml"))
                         .send()
                         .await
                         .unwrap()
                         .text()
                         .await
                         .unwrap();
-                    let projects_toml = Request::new("http://0.0.0.0:9000/projects.toml")
+                    let projects_toml = Request::new(&format!("{url}/static/content/projects.toml"))
                         .send()
                         .await
                         .unwrap()
@@ -145,7 +149,8 @@ pub fn app() -> Html {
                         .unwrap();
                     content.set(Content {
                         blog_metadata: BlogListMetadata::from_text(&blogs_toml).into(),
-                        project_metadata: ProjectsMetadata::from_text(&projects_toml).into()
+                        project_metadata: ProjectsMetadata::from_text(&projects_toml).into(),
+                        url: url_rc,
                     });
                 });
             },

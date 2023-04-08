@@ -25,5 +25,5 @@ command_arguments = [
 ]
 
 [[proxy]]
-rewrite = "/api/v1/content/"
+rewrite = "/static/content/"
 backend = "http://localhost:3965/"
