@@ -36,6 +36,8 @@ pub enum Route {
     Projects,
     #[at("/blogs")]
     BlogList,
+    #[at("/resume")]
+    Resume,
     #[at("/blogs/:slug")]
     Blog { slug: String },
     #[not_found]
@@ -50,6 +52,10 @@ fn switch(routes: Route) -> Html {
         Route::BlogList => html! { <BlogListPage /> },
         Route::Blog { slug } => html! { <BlogPage slug={slug}/> },
         Route::NotFound => html! { <h1>{ "404" }</h1> },
+        Route::Resume => {
+            web_sys::window().unwrap().location().set_pathname("/static/content/resume.pdf").unwrap();
+            html! { <h1>{ "Redirecting to resume..." }</h1> }
+        },
     }
 }
 
@@ -58,12 +64,12 @@ fn toggle_local_storage() -> Option<()> {
     let click_default = "dark";
     let window = web_sys::window()?;
     let local_storage = window.local_storage().ok()??;
-    let (old_value, new_value) = match local_storage.get(key) {
+    let (_old_value, new_value) = match local_storage.get(key) {
         Ok(Some(val)) if val == "light" => ("light", "dark"),
         Ok(Some(val)) if val == "dark" => ("dark", "light"),
         _ => ("", click_default),
     };
-    local_storage.set_item(key, new_value);
+    local_storage.set_item(key, new_value).unwrap();
 
     // set document element's 'class' to 'dark'
     window
