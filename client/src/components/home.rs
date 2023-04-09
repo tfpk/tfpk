@@ -6,9 +6,15 @@ use crate::components::glyphs::{Glyph, GlyphType};
 use crate::Route;
 use yew::classes;
 
+#[derive(Clone, Debug, PartialEq)]
+enum SocialLinkType {
+    WebLink(String),
+    Router(Route)
+}
+
 #[derive(Properties, Clone, Debug, PartialEq)]
 struct SocialLinkProps {
-    link: String,
+    link: SocialLinkType,
     glyph: GlyphType,
     name: String,
     code: String,
@@ -29,18 +35,32 @@ fn toggle_local_storage() -> Option<()> {
 
 #[function_component(SocialLink)]
 fn social_link(props: &SocialLinkProps) -> Html {
-    html! {
-        <div class="space-y-4">
-            <a href={props.link.clone()} class="flex items-center px-6 py-2 shadow-xl ring-1 ring-gray-900/5 dark:ring-gray-50/10 sm:mx-auto sm:rounded-lg sm:px-10 bg-secondary-with-hover">
-                <div class="flex-none">
-                    <Glyph glyph={props.glyph.clone()} />
-                </div>
-                <p class="ml-4">
-                    {props.name.clone()}{": "}
-                    <code class="text-sm font-bold text-secondary">{props.code.clone()}</code>
-                </p>
-            </a>
-        </div>
+    let contents = html! {
+        <>
+            <div class="flex-none">
+                <Glyph glyph={props.glyph.clone()} />
+            </div>
+            <p class="ml-4">
+                {props.name.clone()}{": "}
+                <code class="text-sm font-bold text-secondary">{props.code.clone()}</code>
+            </p>
+        </>
+    };
+    match &props.link {
+        SocialLinkType::WebLink(link) => html! {
+            <div class="space-y-4">
+                <a href={link.to_string()} class="flex items-center px-6 py-2 shadow-xl ring-1 ring-gray-900/5 dark:ring-gray-50/10 sm:mx-auto sm:rounded-lg sm:px-10 bg-secondary-with-hover">
+                    {contents}
+                </a>
+            </div>
+        },
+        SocialLinkType::Router(route) => html! {
+            <div class="space-y-4">
+                <Link<Route> to={route.clone()} classes="flex items-center px-6 py-2 shadow-xl ring-1 ring-gray-900/5 dark:ring-gray-50/10 sm:mx-auto sm:rounded-lg sm:px-10 bg-secondary-with-hover">
+                    {contents}
+                </Link<Route>>
+            </div>
+        }
     }
 }
 
@@ -136,10 +156,10 @@ pub fn contact_section() -> Html {
                     <div class="mx-auto">
                         <div class="divide-y divide-gray-300/50">
                             <div class="space-y-6 py-8 text-base leading-7 text-gray-500">
-                                <SocialLink link="https://twitter.com/tfpk" glyph={GlyphType::Twitter} name="Twitter" code="@tfpk"/>
-                                <SocialLink link="https://linkedin.com/in/tfpk" glyph={GlyphType::Linkedin} name="Linkedin" code="/in/tfpk"/>
-                                <SocialLink link="https://github.com/tfpk" glyph={GlyphType::Github} name="Github" code="@tfpk"/>
-                                <SocialLink link="mailto:tom@tfpk.dev" glyph={GlyphType::Mail} name="Email" code="tom <at> tfpk <dot> dev"/>
+                                <SocialLink link={SocialLinkType::WebLink("https://twitter.com/tfpk".to_string())} glyph={GlyphType::Twitter} name="Twitter" code="@tfpk"/>
+                                <SocialLink link={SocialLinkType::WebLink("https://linkedin.com/in/tfpk".to_string())} glyph={GlyphType::Linkedin} name="Linkedin" code="/in/tfpk"/>
+                                <SocialLink link={SocialLinkType::WebLink("https://github.com/tfpk".to_string())} glyph={GlyphType::Github} name="Github" code="@tfpk"/>
+                                <SocialLink link={SocialLinkType::WebLink("mailto:tom@tfpk.dev".to_string())} glyph={GlyphType::Mail} name="Email" code="tom <at> tfpk <dot> dev"/>
                             </div>
                         </div>
                     </div>
@@ -175,7 +195,7 @@ pub fn blogs_section() -> Html {
                 {recent_blog_html}
             </div>
             <div class={classes!("row", "my-2")}>
-                <SocialLink link="blogs" glyph={GlyphType::Blog} name="Blog" code="tfpk.dev/blogs"/>
+                <SocialLink link={SocialLinkType::Router(Route::BlogList)} glyph={GlyphType::Blog} name="Blog" code="tfpk.dev/blogs"/>
             </div>
         </div>
     };
@@ -193,10 +213,10 @@ pub fn resume_section() -> Html {
                 "If you'd like to read more about my experience, or download my resume, you can do so by pressing the links below."
             }</p>
             <div class={classes!("row", "my-2")}>
-                <SocialLink link="projects" glyph={GlyphType::Experience} name="Projects + Experience" code="tfpk.dev/projects"/>
+                <SocialLink link={SocialLinkType::Router(Route::Projects)} glyph={GlyphType::Experience} name="Projects + Experience" code="tfpk.dev/projects"/>
             </div>
             <div class={classes!("row", "my-2")}>
-                <SocialLink link="resume" glyph={GlyphType::Resume} name="Resume" code="tfpk.dev/resume"/>
+                <SocialLink link={SocialLinkType::Router(Route::Resume)} glyph={GlyphType::Resume} name="Resume" code="tfpk.dev/resume"/>
             </div>
         </div>
     };
