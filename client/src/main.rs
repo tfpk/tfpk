@@ -82,35 +82,49 @@ fn toggle_local_storage() -> Option<()> {
 
 #[function_component(Header)]
 fn header() -> Html {
+    let is_expanded = use_state(|| false);
+    // if it's expanded, show everything
+    let hidden = if *is_expanded {"flex" } else {"hidden"};
+    let rest_of_menu =  html! {
+        <>
+            <div class={classes!(hidden, "md:flex", "md:flex-row", "items-center", "justify-center")}>
+                <Link<Route> to={Route::Home} classes={classes!("text-white", "dark:text-black", "rounded", "hover:bg-gray-500", "hover:text-gray-100", "hover:font-medium", "py-2", "px-2", "md:mx-2")}>{"Home"}</Link<Route>>
+                <Link<Route> to={Route::BlogList} classes={classes!("text-white", "dark:text-black", "rounded", "hover:bg-gray-500", "hover:text-gray-100", "hover:font-medium", "py-2", "px-2", "md:mx-2")}>{"Blogs"}</Link<Route>>
+                <Link<Route> to={Route::Projects} classes={classes!("text-white", "dark:text-black", "rounded", "hover:bg-gray-500", "hover:text-gray-100", "hover:font-medium", "py-2", "px-2", "md:mx-2")}>{"Projects"}</Link<Route>>
+            </div>
+            <div class={classes!(hidden, "md:flex", "md:flex-row", "items-center", "justify-center")}>
+                <div class={classes!("font-bold", "text-gray-800", "md:text-3xl", "flex", "")}>
+                    <a href="https://github.com/tfpk/"><Glyph glyph={GlyphType::Github} color="text-white dark:text-black" /></a>
+                    <a href="https://linkedin.com/in/tfpk/"><Glyph glyph={GlyphType::Linkedin} color="text-white dark:text-black" /></a>
+                    <a href="https://twitter.com/tfpk_/"><Glyph glyph={GlyphType::Twitter} color="text-white dark:text-black" /></a>
+                    <button class={classes!("bg-transparent", "border-transparent")} onclick={|_| {toggle_local_storage();}}><Glyph glyph={GlyphType::Brightness} color="text-white dark:text-black" /></button>
+                </div>
+            </div>
+        </>
+    };
     html! {
         <header>
             <div class={classes!("w-full")}>
                 <nav class={classes!("bg-accent", "shadow-lg")}>
-                    <div class={classes!("md:flex", "items-center", "justify-between", "py-2", "px-8", "md:px-12")}>
-                        <div class={classes!("flex", "justify-between", "items-center")}>
-                            <div class={classes!("font-bold", "text-white", "md:text-3xl", "flex", "")}>
+                    <div class={classes!("flex", "flex-col", "md:flex-row", "justify-between", "py-2", "px-8", "md:px-12")}>
+                        <div class={classes!("flex", "justify-between", "items-center", "w-full", "md:w-auto")}>
+                            <div class={classes!("font-bold", "text-white", "md:text-3xl", "flex")}>
                                <img class={classes!("relative", "mr-4", "inline-block", "h-9", "w-9", "rounded-md", "object-cover", "object-center")} alt="Icon" src="/static/icon_tfpk.jpg"/>
-                                <a href="#" class={classes!("text-2xl", "text-white", "dark:text-black")}>{"TFPK"}</a>
+                                <Link<Route> to={Route::Home} classes={classes!("text-2xl", "text-white", "dark:text-black")}>
+                                  {"TFPK"}
+                                </Link<Route>>
                             </div>
-                        </div>
-                        <div class={classes!("flex", "flex-col", "md:flex-row", "xs:hidden", "md:block-mx-2")}>
                             <div class={classes!("md:hidden")}>
-                                <button type="button" class={classes!("block", "text-white", "hover:text-gray-500", "focus:text-gray-500", "focus:outline-none")}>
+                                <button
+                                    type="button"
+                                    class={classes!("block", "text-white", "hover:text-gray-500", "focus:text-gray-500", "focus:outline-none")}
+                                    onclick={move |_| {is_expanded.set(!*(is_expanded))}}
+                                >
                                     <Glyph glyph={GlyphType::Snackbar} />
                                 </button>
                             </div>
-                            <Link<Route> to={Route::Home} classes={classes!("text-white", "dark:text-black", "rounded", "hover:bg-gray-500", "hover:text-gray-100", "hover:font-medium", "py-2", "px-2", "md:mx-2")}>{"Home"}</Link<Route>>
-                            <Link<Route> to={Route::BlogList} classes={classes!("text-white", "dark:text-black", "rounded", "hover:bg-gray-500", "hover:text-gray-100", "hover:font-medium", "py-2", "px-2", "md:mx-2")}>{"Blogs"}</Link<Route>>
-                            <Link<Route> to={Route::Projects} classes={classes!("text-white", "dark:text-black", "rounded", "hover:bg-gray-500", "hover:text-gray-100", "hover:font-medium", "py-2", "px-2", "md:mx-2")}>{"Projects"}</Link<Route>>
                         </div>
-                        <div class={classes!("flex", "justify-between", "items-center")}>
-                            <div class={classes!("font-bold", "text-gray-800", "md:text-3xl", "flex", "")}>
-                                <a href="https://github.com/tfpk/"><Glyph glyph={GlyphType::Github} color="text-white dark:text-black" /></a>
-                                <a href="https://linkedin.com/in/tfpk/"><Glyph glyph={GlyphType::Linkedin} color="text-white dark:text-black" /></a>
-                                <a href="https://twitter.com/tfpk_/"><Glyph glyph={GlyphType::Twitter} color="text-white dark:text-black" /></a>
-                                <button class={classes!("bg-transparent", "border-transparent")} onclick={|_| {toggle_local_storage();}}><Glyph glyph={GlyphType::Brightness} color="text-white dark:text-black" /></button>
-                            </div>
-                        </div>
+                        {rest_of_menu}
                     </div>
                 </nav>
             </div>

@@ -51,7 +51,7 @@ pub struct ProjectGroupProps {
 #[function_component(ProjectGroup)]
 pub fn project_group(props: &ProjectGroupProps) -> Html {
     html! {
-        <div class={classes!("container" ,"mb-4")}>
+        <div class={classes!("mb-4", "h-full")}>
             <div class={classes!("project-group", "col-12", "flex", "justify-center")}>
             <div class="bg-secondary w-full lg:max-w-full lg:flex shadow-xl ring-1 ring-gray-900/5 dark:ring-gray-50/10">
                 <div class="project-img hidden lg:block lg:h-auto bg-cover flex overflow-hidden" style="background-image: url('./static/project_featured.jpg'); background-size: 100% 100%;">
@@ -102,7 +102,7 @@ pub fn projects_page() -> Html {
     }).collect::<Html>();
 
     html! {
-        <main>
+        <main class="my-4 container flex flex-col justify-stretch">
             {project_list}
         </main>
     }

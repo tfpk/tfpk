@@ -108,5 +108,5 @@ code {
 }
 
 .project-group {
-  height: 512px;
+  min-height: 384px;
 }
