@@ -579,6 +579,11 @@ a:hover {
   margin-bottom: 0.5rem;
 }
 
+.mx-0 {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
 .mx-12 {
   margin-left: 3rem;
   margin-right: 3rem;
@@ -670,10 +675,6 @@ a:hover {
 
 .w-6 {
   width: 1.5rem;
-}
-
-.w-16 {
-  width: 4rem;
 }
 
 .flex-none {

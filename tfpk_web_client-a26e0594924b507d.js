@@ -915,16 +915,16 @@ function getImports() {
         const ret = wasm.memory;
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper2293 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 884, __wbg_adapter_36);
+    imports.wbg.__wbindgen_closure_wrapper2295 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 885, __wbg_adapter_36);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper2712 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 1024, __wbg_adapter_39);
+    imports.wbg.__wbindgen_closure_wrapper2714 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 1025, __wbg_adapter_39);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper2769 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 1048, __wbg_adapter_42);
+    imports.wbg.__wbindgen_closure_wrapper2771 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 1049, __wbg_adapter_42);
         return addHeapObject(ret);
     };
 
@@ -963,7 +963,7 @@ function initSync(module) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = new URL('tfpk_web_client-1a154f33e4556e88_bg.wasm', import.meta.url);
+        input = new URL('tfpk_web_client-a26e0594924b507d_bg.wasm', import.meta.url);
     }
     const imports = getImports();
 
