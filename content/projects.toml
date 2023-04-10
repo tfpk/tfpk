@@ -25,8 +25,48 @@ lower_time = "Current"
 summary = """\
 Well, you're reading it, so hopefully it was worthwhile... This
 website is entirely built in front-end Rust, using the Yew framework.
+The front-end is written using Tailwind. The photos and text are all
+mine.
 """
 link = "https://github.com/tfpk/tfpk.web"
+
+[[project_group]]
+
+title = "Industry Work"
+short_text = """\
+Outside of work as a student and teacher, I've held multiple roles
+within the Software Engineering industry.
+"""
+img_path = "/static/project_featured.jpg"
+
+[[project_group.project]]
+title = "Developer - Kinesis"
+upper_time = "Jan 2018"
+lower_time = "Jun 2020"
+summary = """\
+Working as a part-time developer, I was responsible for the management of software
+to convert industry data-formats into an internal format, testing and maintianing
+over 130 formats. Later, I also worked on the frontend and backend for a new application
+the business was developing.
+"""
+
+[[project_group.project]]
+title = "Intern - Optiver Australia"
+upper_time = "Nov 2021"
+lower_time = "Feb 2022"
+summary = """\
+Worked as a summer intern, studying finance fundamentals, and applying them to a project
+used by traders within Optiver.
+"""
+
+[[project_group.project]]
+title = "Graduate - Optiver Australia"
+upper_time = "Feb 2023"
+lower_time = "Current"
+summary = """\
+Currently working on building and deploying a new project expected to increase agility and
+data quality throughout the business.
+"""
 
 
 [[project_group]]
@@ -41,13 +81,96 @@ Modern Programming Problems with Rust).
 """
 img_path = "/static/project_UNSW_tutor.jpg"
 
+[[project_group.project]]
+title = "Tutor - COMP1511 (Programming Fundamentals)"
+upper_time = "June 2018"
+lower_time = "Dec 2022"
+summary = """\
+Taught over 300 students in 10 terms, teaching Unix and C fundamentals to
+undergraduate students. Achieved average student satisfaction rating of 5.96/6.0.
+"""
+
+[[project_group.project]]
+title = "Course Administrator - COMP1511 (Programming Fundamentals)"
+upper_time = "June 2019"
+lower_time = "Dec 2022"
+summary = """\
+Helped to manage up to 50 tutors a term, creating training programs and resources
+for new tutor, and managing tutor questions and issues. Co-authored 4 assignments and 9 exams,
+supervised 10 other assignments, and re-wrote other teaching materials for students.
+Delivered multiple online lectures and revision sessions.
+"""
+
+[[project_group.project]]
+title = "Course Administrator - COMP6721 (Informal Methods)"
+upper_time = "Nov 2021"
+lower_time = "Aug 2022"
+summary = """\
+Restructured Informal Methods for a larger audience, including authoring a new
+assignment and marking system, and helping structure the course overall.
+"""
+link = "https://github.com/COMP6721UNSW/pifm_public"
+
+[[project_group.project]]
+title = "Course Administrator - COMP6991 (Solving Modern Programming Problems with Rust)"
+upper_time = "Nov 2021"
+lower_time = "Current"
+summary = """\
+Helped to propose, design and run a Rust Course at UNSW. Wrote two assignments
+and ten workshops and co-wrote an exam, and led two workshops through ten weeks.
+"""
+
 
 [[project_group]]
 
-title = "Computer Science Student @ UNSW"
+title = "Computer Science Student @ UNSW Sydney"
 short_text = """
 I was a student for the Bachelor of Computer Science from 2018 to 2022.
-I didn't major in an area of computer science: I studied broad fields
-from Operating Systems, to Theoretical CS, to Security.
+While a student, I was involved in multiple representative bodes and
+co-curricular organisations
 """
 img_path = "/static/project_UNSW_student.jpg"
+
+[[project_group.project]]
+title = "BSc (Computer Science) with Distinction - UNSW Sydney"
+upper_time = "Nov 2021"
+lower_time = "Current"
+summary = """\
+Completed a degree, with broad coverage of topics including Operating Systems,
+Security and (in)Formal Methods.
+"""
+
+[[project_group.project]]
+title = "Projects Co-Director then Grievance Officer - UNSW CSESoc"
+upper_time = "Nov 2018"
+lower_time = "Nov 2020"
+summary = """\
+While in CSESoc, I held two roles: Co-Director of Projects, and then was the inaugural Grievance Officer.
+As Co-Director of Projects, I recruited, organised and helped train students for student-run CS projects, such as
+timetabling engines and degree planners (some of which are now used by 100s of students). As the
+first Grievance Officer, I was responsible for designing and implementing a grievance procedure and
+for the safe running of multiple large events (such as a first-year camp and a hackathon); as well as for
+helping the other Executive members carry out their duties.
+"""
+
+[[project_group.project]]
+title = "Student Representative & Casual Academic Representative - UNSW CSE"
+upper_time = "Jan 2020"
+lower_time = "Dec 2022"
+summary = """\
+Re-institutded the CSE Stu-Reps, listening to and advocating for students within the school.
+Helped create the Casac-Reps, who performed a similar role for casual staff within the school.
+Initiatives included running thrice-yearly surveys of students within the school, and communicating
+student/casual staff complaints and suggestions to relevant staff members.
+"""
+
+[[project_group.project]]
+title = "Secretary then President - Australian Debating Council"
+upper_time = "Apr 2019"
+lower_time = "Mar 2021"
+summary = """\
+Helped to form the Australian Debating Council as a seperate entity from AIDA,
+the Australaisan University Debating body. Responsibilities included writing
+and passing a constitution, incorporating the body, and managing multiple
+large debating tournaments, twice including the Australian Easter Championships.
+"""

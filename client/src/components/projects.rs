@@ -1,9 +1,7 @@
 use yew::prelude::*;
 
 use yew::classes;
-use yew_router::prelude::*;
 
-use crate::Route;
 use crate::components::glyphs::{Glyph, GlyphType};
 
 #[derive(Properties, PartialEq, Clone)]
@@ -20,7 +18,7 @@ pub fn project_summary(props: &ProjectSummaryProps) -> Html {
     html! {
         <>
             <div class="flex w-full">
-                <div class="flex flex-col text-md text-center m-2 w-16">
+                <div class="flex flex-col text-sm text-center my-2">
                     <span>{props.upper_time.clone()}</span>
                     <span>{"-"}</span>
                     <span>{props.lower_time.clone()}</span>
@@ -29,7 +27,7 @@ pub fn project_summary(props: &ProjectSummaryProps) -> Html {
                     <h2 class="text-lg font-extrabold">{props.title.clone()}</h2>
                     <p>{props.summary.clone()}</p>
                 </div>
-                <div class="flex flex-col justify-center text-lg text-center w-8">
+                <div class="flex flex-col justify-center text-lg text-center my-2 mx-0 w-8">
                     <a href={props.link.clone()}>
                         <Glyph glyph={GlyphType::Github} />
                     </a>

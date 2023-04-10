@@ -20,7 +20,7 @@ use crate::components::home::HomePage;
 use crate::components::projects::ProjectsPage;
 
 use crate::protocols::blog_list_toml::BlogListMetadata;
-use crate::protocols::projects_list_toml::{Project, ProjectsMetadata};
+use crate::protocols::projects_list_toml::ProjectsMetadata;
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
 // allocator.
@@ -30,6 +30,10 @@ static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 #[derive(Debug, Clone, Routable, PartialEq)]
 pub enum Route {
+    // shortcuts
+    #[at("/blogs/palantir_essay/essay.pdf")]
+    EssayPDF,
+
     #[at("/")]
     Home,
     #[at("/projects")]
@@ -55,6 +59,10 @@ fn switch(routes: Route) -> Html {
         Route::Resume => {
             web_sys::window().unwrap().location().set_pathname("/static/content/resume.pdf").unwrap();
             html! { <h1>{ "Redirecting to resume..." }</h1> }
+        },
+        Route::EssayPDF => {
+            web_sys::window().unwrap().location().set_pathname("/static/content/blogs/palantir_essay/essay.pdf").unwrap();
+            html! { <h1>{ "Redirecting to pdf..." }</h1> }
         },
     }
 }

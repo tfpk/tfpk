@@ -8,7 +8,7 @@ use yew::prelude::*;
 pub fn use_blog_list() -> Vec<BlogMetadata> {
     let blogs = use_context::<Rc<UseStateHandle<Content>>>().expect("No ctx found");
     let blog_list = &blogs.blog_metadata.blogs;
-    return blog_list.clone();
+    blog_list.clone()
 }
 
 #[hook]

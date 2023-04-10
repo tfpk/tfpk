@@ -20,19 +20,6 @@ struct SocialLinkProps {
     code: String,
 }
 
-fn toggle_local_storage() -> Option<()> {
-    let key = "theme";
-    let click_default = "dark";
-    let local_storage = web_sys::window()?.local_storage().ok()??;
-    let new_value = match local_storage.get(key) {
-        Ok(Some(val)) if val == "light" => "dark",
-        Ok(Some(val)) if val == "dark" => "light",
-        _ => click_default,
-    };
-    local_storage.set_item(key, new_value).ok()?;
-    Some(())
-}
-
 #[function_component(SocialLink)]
 fn social_link(props: &SocialLinkProps) -> Html {
     let contents = html! {

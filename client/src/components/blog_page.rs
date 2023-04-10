@@ -4,6 +4,7 @@ use yew::prelude::*;
 use yew::classes;
 
 use markdown::to_html;
+use crate::{Content, UseStateHandle};
 
 use std::rc::Rc;
 
@@ -15,6 +16,7 @@ pub struct BlogPageProps {
 #[function_component(BlogPage)]
 pub fn blog_page(props: &BlogPageProps) -> Html {
     let blog_metadata = crate::blogs::use_blog(&props.slug);
+    let state = use_context::<Rc<UseStateHandle<Content>>>().expect("No ctx found");
 
     let blog_content: Rc<UseStateHandle<Option<String>>> = Rc::new(use_state(|| None));
 
@@ -25,8 +27,9 @@ pub fn blog_page(props: &BlogPageProps) -> Html {
             |_| {
                 wasm_bindgen_futures::spawn_local(async move {
                     if let Some(found_blog) = blog_metadata_closure {
-                        let req_path = format!("http://0.0.0.0:9000/{}", found_blog.md_path);
-                        let blogs_content = Request::new(&req_path)
+                        let url = &state.url;
+                        let req_path = &format!("{url}/static/content/{}", found_blog.md_path);
+                        let blogs_content = Request::new(req_path)
                             .send()
                             .await
                             .unwrap()
