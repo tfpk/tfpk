@@ -133,8 +133,8 @@ img_path = "/static/project_UNSW_student.jpg"
 
 [[project_group.project]]
 title = "BSc (Computer Science) with Distinction - UNSW Sydney"
-upper_time = "Nov 2021"
-lower_time = "Current"
+upper_time = "Jan 2018"
+lower_time = "May 2022"
 summary = """\
 Completed a degree, with broad coverage of topics including Operating Systems,
 Security and (in)Formal Methods.
