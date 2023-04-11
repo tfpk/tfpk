@@ -8,6 +8,8 @@ use crate::{Content, UseStateHandle};
 
 use std::rc::Rc;
 
+use crate::protocols::blog_list_toml::BlogMetadata;
+
 #[derive(Properties, PartialEq, Clone)]
 pub struct BlogPageProps {
     pub slug: String,
@@ -42,17 +44,20 @@ pub fn blog_page(props: &BlogPageProps) -> Html {
                     }
                 });
             },
-            blog_metadata,
+            blog_metadata.clone(),
         );
     }
 
     let blog_text = &(**blog_content)
         .clone()
         .unwrap_or("# Loading...".to_string());
+    let blog_img = if let Some(BlogMetadata { ref img_path, ..}) = blog_metadata {html! {
+        <img src={img_path.clone()} />
+    }} else { html!{<></>} };
     let parsed = yew::Html::from_html_unchecked(yew::AttrValue::from(to_html(blog_text)));
     html! {
         <div class={classes!("container", "blog-content" ,"mb-4")}>
-            <img src={"/static/hero_zion.jpg"} />
+            {blog_img}
             {parsed}
         </div>
     }
