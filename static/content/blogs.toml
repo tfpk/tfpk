@@ -5,17 +5,50 @@ slug = "cs2521-on-easy-mode"
 lede = "This blog walks through everything you need to know to get through COMP2521"
 tags = ["UNSW"]
 md_path = "blogs/2521_easy_mode/2521_easy_mode.md"
-img_path = "static/hero_zion.jpg"
+img_path = "/static/hero_zion.jpg"
 published  = 2023-03-28T12:00:00
 last_updated = 2023-03-28T12:00:00
 
 [[blogs]]
 
 title = "Prepping for Interviews in Big Tech"
-slug = "bigtech-interviews"
+slug = "interview_advice"
 lede = "This explores the main pieces of advice I give to students preparing for intern/grad interviews in big tech."
 tags = ["Interview Advice"]
 md_path = "blogs/interview_advice/blog.md"
-img_path = "static/hero_zion.jpg"
+img_path = "/static/content/blogs/interview_advice/image.png"
+published  = 2023-03-28T12:00:00
+last_updated = 2023-03-28T12:00:00
+
+[[blogs]]
+
+title = "Palantir Essay"
+slug = "palantir-essay"
+lede = "As part of COMP4920 (Management and Ethics), I wrote this essay as an assignment. A few people were interested, so I wanted to publish it."
+tags = ["UNSW", "Ethics"]
+md_path = "blogs/palantir_essay/blog.md"
+img_path = "/static/content/blogs/palantir_essay/image.webp"
+published  = 2023-03-28T12:00:00
+last_updated = 2023-03-28T12:00:00
+
+[[blogs]]
+
+title = "UNSW Ethics"
+slug = "unsw-ethics"
+lede = "An open letter I wrote a few years ago highlighting some issues with the state of ethics education at CSE in UNSW."
+tags = ["UNSW", "Ethics"]
+md_path = "blogs/unsw_ethics/blog.md"
+img_path = "/static/content/blogs/unsw_ethics/image.jpeg"
+published  = 2023-03-28T12:00:00
+last_updated = 2023-03-28T12:00:00
+
+[[blogs]]
+
+title = "Profiling"
+slug = "profiling"
+lede = "A write-up of an interesting task I had at an old job, exploring lessons learned about profiling performance."
+tags = ["Profiling", "Work"]
+md_path = "blogs/profiling/blog.md"
+img_path = "/static/content/blogs/profiling/image.jpeg"
 published  = 2023-03-28T12:00:00
 last_updated = 2023-03-28T12:00:00
