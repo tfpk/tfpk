@@ -15,6 +15,14 @@ pub struct ProjectSummaryProps {
 
 #[function_component(ProjectSummary)]
 pub fn project_summary(props: &ProjectSummaryProps) -> Html {
+    let link = match &props.link {
+        Some(link) => html! {
+            <a href={link.clone()}>
+                <Glyph glyph={GlyphType::Github} />
+            </a>
+        },
+        None => html!{},
+    };
     html! {
         <>
             <div class="flex w-full">
@@ -28,9 +36,7 @@ pub fn project_summary(props: &ProjectSummaryProps) -> Html {
                     <p>{props.summary.clone()}</p>
                 </div>
                 <div class="flex flex-col justify-center text-lg text-center my-2 mx-0 w-8">
-                    <a href={props.link.clone()}>
-                        <Glyph glyph={GlyphType::Github} />
-                    </a>
+                    {link}
                 </div>
             </div>
             <hr class="m-2 mx-12"/>
