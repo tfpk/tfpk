@@ -1,7 +1,3 @@
----
-title: 'Computer Science or Software Engineering at UNSW'
-media_order: 121528379_1231755900527443_1141499252150583156_n.jpg
----
 
 If you are about to choose a degree in the school of Computer Science and Engineering, this document is for you! So you know who I am, I’m a(bout to be a) third year Bachelor of Computer Science, which means I might be biased!
 
