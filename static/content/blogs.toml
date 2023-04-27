@@ -52,3 +52,15 @@ md_path = "blogs/profiling/blog.md"
 img_path = "/static/content/blogs/profiling/image.jpeg"
 published  = 2023-03-28T12:00:00
 last_updated = 2023-03-28T12:00:00
+
+
+[[blogs]]
+
+title = "UNSW CS or Seng"
+slug = "unsw_cs_or_seng"
+lede = "Info about the two main programs within CSE."
+tags = ["UNSW"]
+md_path = "blogs/unsw_cs_or_seng/post.md"
+img_path = "/static/content/blogs/unsw_cs_or_seng/121528379_1231755900527443_1141499252150583156_n.jpg"
+published  = 2023-03-28T12:00:00
+last_updated = 2023-03-28T12:00:00
