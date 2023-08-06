@@ -64,3 +64,15 @@ md_path = "blogs/unsw_cs_or_seng/post.md"
 img_path = "/static/content/blogs/unsw_cs_or_seng/121528379_1231755900527443_1141499252150583156_n.jpg"
 published  = 2023-03-28T12:00:00
 last_updated = 2023-03-28T12:00:00
+
+
+[[blogs]]
+
+title = "Interesting Security Talks"
+slug = "interesting_talks"
+lede = "A collection of links to talks I've enjoyed, that are vaguely related to security."
+tags = ["Security", "Talks"]
+md_path = "blogs/interesting_talks/post.md"
+img_path = "/static/content/blogs/interesting_talks/defcon.jpg"
+published  = 2019-05-28T12:00:00
+last_updated = 2023-08-06T12:00:00
