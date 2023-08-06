@@ -20,7 +20,7 @@ yew-router = "0.17"
 toml = "0.7.3"
 gloo-net = "0.2.6"
 chrono = "0.4.24"
-markdown = "0.3.0"
+markdown = "1.0.0-alpha.11"
 
 [dev-dependencies]
 wasm-bindgen-test = "0.3"
