@@ -54,7 +54,10 @@ pub fn blog_page(props: &BlogPageProps) -> Html {
     let blog_img = if let Some(BlogMetadata { ref img_path, ..}) = blog_metadata {html! {
         <img src={img_path.clone()} />
     }} else { html!{<></>} };
-    let parsed = yew::Html::from_html_unchecked(yew::AttrValue::from(to_html_with_options(blog_text, markdown::Options::gfm())));
+    let parsed = yew::Html::from_html_unchecked(
+        yew::AttrValue::from(
+            to_html_with_options(blog_text, &markdown::Options::gfm())
+                .unwrap_or("<h1>Error</h1>".to_string())));
     html! {
         <div class={classes!("container", "blog-content" ,"mb-4")}>
             {blog_img}
